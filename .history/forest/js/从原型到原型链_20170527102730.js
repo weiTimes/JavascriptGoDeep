@@ -1,0 +1,63 @@
+/**
+ * 构造函数创建对象
+ * 
+ */
+function Person() {
+
+}
+/**
+ * 原型
+ * 函数 | 对象(Person)的prototype指向实例(person1, person2)的原型
+ * 每个函数 | 对象在创建的时候都会关联原型，然后从原型'继承'属性
+ * 
+ * 实例person1, person2实例  实例原型 Person.prototype
+ * __proto__ 指向实例原型，即Person.prototype
+ */
+// Person.prototype.name = 'yewei';
+// let person1 = new Person();
+// let person2 = new Person();
+// console.log(person1.name); // yewei
+// console.log(person2.name); // yewei
+// console.log(person1.__proto__ === Person.prototype); // true
+
+// constructor
+// 每个原型都有一个constructor属性指向与之关联的构造函数(Person)
+// console.log(Person === Person.prototype.constructor);
+
+// 获得对象的原型
+// console.log(Object.getPrototypeOf(person1) === Person.prototype); // true
+
+/**
+ * 实例与原型之间的关系
+ */
+// Person.prototype.name = 'yewei';  // 实例原型有一个name属性
+// let person = new Person();
+// person.name = 'wei';
+// console.log(person.name); // 读取实例的属性
+
+// delete person.name;
+// console.log(person.name); // 因为被删除了，所以在实例中找不到该属性，就会查找与实例对象关联的原型中的属性(person.__proto__ => Person.prototype.name)
+
+/**
+ * 原型的原型
+ * 查到属性的时候查到 Object.prototype 就停止查找了，因为没有__proto__ => xxx.prototype
+ */
+// console.log(Object.prototype.__proto__ === null); // true
+
+/**
+ * 补充
+ */
+let person = new Person();
+// 当获取person.constructor时，其实 person 中并没有 constructor 属性,当不能读取到constructor 属性时，会从 person 的原型也就是 person.__proto__ => Person.prototype 中读取，正好原型中有该属性
+console.log(person.constructor === Person.prototype.constructor); // true
+
+// obj.__proto__ <==> Object.getPrototypeOf(obj)
+
+
+
+
+
+
+
+
+
